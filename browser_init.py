@@ -15,11 +15,16 @@ class BrowserInit:
     def get_and_split_list(self):
         user = []
         password = []
-        with open(self.directory, 'r') as combos:
-            for line in combos.readlines():
-                user.append(line.split(":")[0].strip())
-                password.append(line.split(":")[1].strip())
-        combos.close()
+        try:
+            with open(self.directory, 'r') as combos:
+                for line in combos.readlines():
+                    user.append(line.split(":")[0].strip())
+                    password.append(line.split(":")[1].strip())
+            combos.close()
+        except FileNotFoundError:
+            print("Combo list not found. Make sure it's placed in {} and named 'ipvanish'."
+                  .format(self.directory))
+            exit()
         return user, password
 
     def open_page_and_enter_credentials(self, usr, passw):
