@@ -4,7 +4,7 @@
 Load up any combo-lists, and check whether accounts for the IPVanish VPN service are valid or not.
 
 
-Either use Selenium, or just send a request to IPVanish's api endpoint, whichever seems to work. With the second option you might get blocked quicker without rotating proxies.
+Either use Selenium, or just send a POST request to IPVanish's api endpoint, whichever seems to work. With the second option you might get blocked quicker without rotating proxies.
 
 
 Combos are placed in a file named "ipvanish" (no extension) placed in the ```combos``` folder.
