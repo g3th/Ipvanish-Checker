@@ -1,5 +1,5 @@
 # IPvanish Account Checker
-## Account Checker Using Selenium Webdriver
+## Account Checker Using Selenium Webdriver and Requests
 
 Load up any combo-lists, and check whether accounts for the IPVanish VPN service are valid or not.
 
