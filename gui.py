@@ -1,4 +1,7 @@
+from header import title
+
 def text_user_interface():
+    title()
     print("Choose Option:")
     print("(Option 2 usually needs paid proxies, but who's stupid enough to pay for things, right?)")
     print("\n1) Check with Selenium")

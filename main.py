@@ -5,14 +5,12 @@ from browser_init import BrowserInit
 from requests_checker import RequestsChecker
 
 if __name__ == '__main__':
-    title()
     directory = "/home/roberto/Desktop/cookie.json"
     page = "https://sso.ipvanish.com/"
-
     loop_ends = False
     counter = 0
-    TUI = text_user_interface()
     while not loop_ends:
+        TUI = text_user_interface()
         match TUI:
             case "1":
                 while True:
@@ -37,4 +35,4 @@ if __name__ == '__main__':
             case _:
                 print("Invalid Choice.")
                 input("Press Enter...")
-                print("\1xbc")
+                print("\x1bc")
