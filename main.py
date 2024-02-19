@@ -80,8 +80,7 @@ if __name__ == '__main__':
                 except Exception as e:
                     if "Unable to obtain driver for chrome" in str(e):
                         print("There is a problem with your chromedriver installation:")
-                        print("1) Run the shell script included with superuser privileges")
-                        print("2) Fix the problem yourself")
+                        print("Please check all program folders are intact")
                         print("\nEnding")
                         exit()
                     else:
