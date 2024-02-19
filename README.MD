@@ -6,6 +6,9 @@
 Load up any combo-lists, and check whether accounts for the IPVanish VPN service are valid or not.
 
 
+Included is a small module which will download chromedriver for your current chrome version, and place it in the ```chromedriver``` folder present in the program's main directory.
+
+
 Either use Selenium, or just send a POST request to IPVanish's api endpoint.
 
 
