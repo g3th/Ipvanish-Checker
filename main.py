@@ -5,7 +5,7 @@ from subprocess import run
 from subprocess import PIPE
 from gui import sub_menu
 from gui import text_user_interface
-from browser_init import BrowserInit
+from browser_init import BrowserInit, get_and_split_list
 from download_chromedriver import DownloadChromedriver
 from requests_checker import RequestsChecker
 
@@ -40,19 +40,20 @@ if __name__ == '__main__':
                 download_chromeDriver.file_operations()
                 chromedriver_is_installed = True
             else:
-                browser = BrowserInit(page)
                 try:
                     match TUI:
                         case "1":
-                            while True:
-                                user, password = browser.get_and_split_list()
-                                if counter == len(user):
-                                    loop_ends = True
-                                    break
+                            user, password = get_and_split_list()
+                            while counter < len(user):
+                                browser = BrowserInit(page)
                                 browser.open_page_and_enter_credentials(user[counter], password[counter])
-                                time.sleep(2)
+                                time.sleep(3)
                                 browser.check_validity_and_store_if_valid(user[counter], password[counter])
+                                browser.close()
                                 counter += 1
+                                if counter == len(user):
+                                    print("\n\nFinished Checking. Press Enter to Continue")
+                                    input()
                         case "2":
                             index = 0
                             while True:

@@ -58,6 +58,7 @@ class RequestsChecker:
         if usr:
             rotating_proxy_list = proxies(index)
             send_POST_request = requests.post(self.page, data=payload, proxies=rotating_proxy_list)
+            print(send_POST_request)
             print("Current proxy: {}".format(rotating_proxy_list))
         else:
             send_POST_request = requests.post(self.page, headers=self.headers_data, data=payload)

@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from pathlib import Path
 
+
 class BrowserInit:
 
     def __init__(self, page):
@@ -19,7 +20,7 @@ class BrowserInit:
                                           'AppleWebKit/537.36 (KHTML, like Gecko) '
                                           'Chrome/121.0.0.0 Safari/537.36"')
         self.browser_options.add_argument('--log-level=3')
-        self.browser_options.add_argument('--headless=new')
+        #self.browser_options.add_argument('--headless=new')
         self.browser = webdriver.Chrome(options=self.browser_options, service=self.browser_service)
         self.page = page
         self.directory = "combos/ipvanish"
@@ -52,17 +53,22 @@ class BrowserInit:
         with open(d, 'w') as write_cookie:
             json.dump(self.browser.get_cookies(), write_cookie, indent=3)
 
-    def get_and_split_list(self):
-        user = []
-        password = []
-        try:
-            with open(self.directory, 'r') as combos:
-                for line in combos.readlines():
-                    user.append(line.split(":")[0].strip())
-                    password.append(line.split(":")[1].strip())
-            combos.close()
-        except FileNotFoundError:
-            print("Combo list not found. Make sure it's placed in {} and named 'ipvanish'."
-                  .format(self.directory))
-            exit()
-        return user, password
+    def close(self):
+        self.browser.close()
+
+
+def get_and_split_list():
+    user = []
+    password = []
+    directory = "combos/ipvanish"
+    try:
+        with open(directory, 'r') as combos:
+            for line in combos.readlines():
+                user.append(line.split(":")[0].strip())
+                password.append(line.split(":")[1].strip())
+        combos.close()
+    except FileNotFoundError:
+        print("Combo list not found. Make sure it's placed in {} and named 'ipvanish'."
+              .format(directory))
+        exit()
+    return user, password
